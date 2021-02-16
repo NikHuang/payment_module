@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhq.payment.dao.PaymentMapper">
+
+  <resultMap id="baseResultMap" type="com.hhq.payment.domain.Payment">
+    <id column="id" property="id" javaType="string" jdbcType="VARCHAR"></id>
+    <result column="name" property="name" javaType="string" jdbcType="VARCHAR"></result>
+    <result column="brief_name" property="briefName" javaType="string" jdbcType="VARCHAR"></result>
+    <result column="create_time" property="createTime" javaType="date" jdbcType="TIMESTAMP"></result>
+    <result column="update_time" property="updateTime" javaType="date" jdbcType="TIMESTAMP"></result>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, brief_name,  create_time, update_time
+  </sql>
+  <sql id="Base_Param_List">
+    #{id}, #{name}, #{briefName},  #{createTime}, #{updateTime}
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="baseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from payment
+    where id = #{id}
+  </select>
+<!--  <delete id="deleteByPrimaryKey">-->
+<!--    delete from mall_category-->
+<!--    where id = #{id}-->
+<!--  </delete>-->
+  <insert id="insert">
+    insert into payment (<include refid="Base_Column_List" />)
+    values (<include refid="Base_Param_List" /> )
+  </insert>
+<!--  <insert id="insertSelective">-->
+<!--    insert into mall_category-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        id,-->
+<!--      </if>-->
+<!--      <if test="parentId != null">-->
+<!--        parent_id,-->
+<!--      </if>-->
+<!--      <if test="name != null">-->
+<!--        name,-->
+<!--      </if>-->
+<!--      <if test="status != null">-->
+<!--        status,-->
+<!--      </if>-->
+<!--      <if test="sortOrder != null">-->
+<!--        sort_order,-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        create_time,-->
+<!--      </if>-->
+<!--      <if test="updateTime != null">-->
+<!--        update_time,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="id != null">-->
+<!--        #{id},-->
+<!--      </if>-->
+<!--      <if test="parentId != null">-->
+<!--        #{parentId},-->
+<!--      </if>-->
+<!--      <if test="name != null">-->
+<!--        #{name},-->
+<!--      </if>-->
+<!--      <if test="status != null">-->
+<!--        #{status},-->
+<!--      </if>-->
+<!--      <if test="sortOrder != null">-->
+<!--        #{sortOrder},-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        #{createTime},-->
+<!--      </if>-->
+<!--      <if test="updateTime != null">-->
+<!--        #{updateTime},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective">-->
+<!--    update mall_category-->
+<!--    <set>-->
+<!--      <if test="parentId != null">-->
+<!--        parent_id = #{parentId},-->
+<!--      </if>-->
+<!--      <if test="name != null">-->
+<!--        name = #{name},-->
+<!--      </if>-->
+<!--      <if test="status != null">-->
+<!--        status = #{status},-->
+<!--      </if>-->
+<!--      <if test="sortOrder != null">-->
+<!--        sort_order = #{sortOrder},-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        create_time = #{createTime},-->
+<!--      </if>-->
+<!--      <if test="updateTime != null">-->
+<!--        update_time = #{updateTime},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where id = #{id}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey">-->
+<!--    update mall_category-->
+<!--    set parent_id = #{parentId},-->
+<!--      name = #{name},-->
+<!--      status = #{status},-->
+<!--      sort_order = #{sortOrder},-->
+<!--      create_time = #{createTime},-->
+<!--      update_time = #{updateTime}-->
+<!--    where id = #{id}-->
+<!--  </update>-->
+<!--  -->
+<!--  <select id="selectAllCategory" resultType="com.recover.spmall.domain.MallCategory">-->
+<!--    select-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from mall_category-->
+<!--    where status = 1-->
+<!--  </select>-->
+</mapper>
