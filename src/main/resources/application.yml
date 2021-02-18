@@ -4,11 +4,13 @@ server:
 spring:
   application:
     name: payment
+  profiles:
+    active: single
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       filter: stat
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/cloudbase?characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
       username: root
       password: 123456

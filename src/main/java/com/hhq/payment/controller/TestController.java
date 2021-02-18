@@ -20,7 +20,6 @@ public class TestController {
 
     @GetMapping("/testGetPayment/{id}")
     public Result<Payment> getResult(@PathVariable("id")String id){
-        PomModelSingleton.getInstance();
         Payment payment = paymentService.selectByPrimaryKey(id);
         return Result.success(payment);
     }
